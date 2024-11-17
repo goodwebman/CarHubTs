@@ -3,10 +3,9 @@
 import { CarProps } from '@/types'
 import { calculateCarRent } from '@/utils'
 import Image from 'next/image'
-import CustomButton from './CustomButton'
 import { useState } from 'react'
 import CarDetails from './CarDetails'
-
+import CustomButton from './CustomButton'
 
 interface CarCardProps {
 	car: CarProps
@@ -31,13 +30,8 @@ const CarCard = ({ car }: CarCardProps) => {
 				<span className='self-end text-[14px] font-medium'>/day</span>
 			</p>
 
-			<div className='relative w-50 h-50 my-3 object-contain items-center flex'>
-				<img
-					src='/hero.png'
-					alt='car model'
-					className='object-contain'
-					
-				/>
+			<div className='relative my-3 object-contain h-40'>
+				<img src='/hero.png' alt='car model' className='object-contain' />
 			</div>
 
 			<div className='relative flex w-full mt-2'>
@@ -61,30 +55,31 @@ const CarCard = ({ car }: CarCardProps) => {
 							height={20}
 							alt='steering wheel'
 						/>
-						<p className='text-[14px] '>
-							{drive.toUpperCase()}
-						</p>
+						<p className='text-[14px] '>{drive.toUpperCase()}</p>
 					</div>
 
 					<div className='flex flex-col justify-center items-center gap-2'>
-						<Image
-							src='/gas.svg'
-							width={20}
-							height={20}
-							alt='steering wheel'
-						/>
-						<p className='text-[14px] '>
-							{city_mpg} MPG
-						</p>
+						<Image src='/gas.svg' width={20} height={20} alt='steering wheel' />
+						<p className='text-[14px] '>{city_mpg} MPG</p>
 					</div>
 				</div>
 
 				<div className='car-card__btn-container'>
-					<CustomButton title='View More' containerStyles='w-full py-[16px] rounded-full bg-primary-blue' textStyles='text-white text-[14px] leading-[17px] font-bold' rightIcon='/right-arrow.svg' handleClick={() => setIsOpen(true)}/>
+					<CustomButton
+						title='View More'
+						containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
+						textStyles='text-white text-[14px] leading-[17px] font-bold'
+						rightIcon='/right-arrow.svg'
+						handleClick={() => setIsOpen(true)}
+					/>
 				</div>
 			</div>
 
-			<CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car} />
+			<CarDetails
+				isOpen={isOpen}
+				closeModal={() => setIsOpen(false)}
+				car={car}
+			/>
 		</div>
 	)
 }
